@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="555" pageHeight="842" columnWidth="515" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.3310000000000024"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="cod" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT prod_codigo, prod_produto, tipprod_tipoproduto
+FROM tb_produtos 
+INNER JOIN tb_fornecedores ON prod_tb_fornecedor = for_cod 
+INNER JOIN tb_departamento ON prod_tb_departamento = dep_cod 
+INNER JOIN tb_cor ON prod_tb_cor = cor_cod 
+INNER JOIN tb_tamanho ON prod_tb_tamanho = tam_cod 
+INNER JOIN tb_material ON prod_tb_material = mat_cod 
+INNER JOIN tb_tipoproduto ON prod_tb_tipoproduto = tipprod_cod
+WHERE prod_cod = $P{cod}]]>
+	</queryString>
+	<field name="prod_codigo" class="java.lang.String"/>
+	<field name="prod_produto" class="java.lang.String"/>
+	<field name="tipprod_tipoproduto" class="java.lang.String"/>
+	<title>
+		<band height="28" splitType="Stretch">
+			<textField>
+				<reportElement x="177" y="12" width="323" height="12" forecolor="#000066"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{prod_produto}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="0" width="131" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Código de Barra: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="177" y="0" width="131" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Descriçao do Produto:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="2" y="12" width="175" height="12" forecolor="#000066"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{prod_codigo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="755">
+			<rectangle>
+				<reportElement x="348" y="613" width="162" height="116"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="6" y="5" width="162" height="116"/>
+			</rectangle>
+			<textField>
+				<reportElement x="7" y="5" width="161" height="27" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{prod_produto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="7" y="99" width="161" height="22" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipprod_tipoproduto}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="6" y="126" width="162" height="116"/>
+			</rectangle>
+			<textField>
+				<reportElement x="7" y="220" width="161" height="22" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipprod_tipoproduto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="7" y="126" width="161" height="27" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{prod_produto}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement mode="Opaque" x="24" y="153" width="134" height="62"/>
+				<jr:Code39 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{prod_codigo}]]></jr:codeExpression>
+				</jr:Code39>
+			</componentElement>
+			<rectangle>
+				<reportElement x="6" y="248" width="162" height="116"/>
+			</rectangle>
+			<textField>
+				<reportElement x="7" y="342" width="161" height="22" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipprod_tipoproduto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="7" y="248" width="161" height="27" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{prod_produto}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement mode="Opaque" x="24" y="275" width="134" height="62"/>
+				<jr:Code39 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{prod_codigo}]]></jr:codeExpression>
+				</jr:Code39>
+			</componentElement>
+			<rectangle>
+				<reportElement x="6" y="371" width="162" height="116"/>
+			</rectangle>
+			<textField>
+				<reportElement x="7" y="465" width="161" height="22" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipprod_tipoproduto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="7" y="371" width="161" height="27" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{prod_produto}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement mode="Opaque" x="24" y="397" width="134" height="62"/>
+				<jr:Code39 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{prod_codigo}]]></jr:codeExpression>
+				</jr:Code39>
+			</componentElement>
+			<rectangle>
+				<reportElement x="6" y="492" width="162" height="116"/>
+			</rectangle>
+			<textField>
+				<reportElement x="7" y="492" width="161" height="27" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{prod_produto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="7" y="586" width="161" height="22" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipprod_tipoproduto}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement mode="Opaque" x="24" y="519" width="134" height="62"/>
+				<jr:Code39 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{prod_codigo}]]></jr:codeExpression>
+				</jr:Code39>
+			</componentElement>
+			<rectangle>
+				<reportElement x="6" y="613" width="162" height="116"/>
+			</rectangle>
+			<componentElement>
+				<reportElement mode="Opaque" x="24" y="640" width="134" height="62"/>
+				<jr:Code39 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{prod_codigo}]]></jr:codeExpression>
+				</jr:Code39>
+			</componentElement>
+			<rectangle>
+				<reportElement x="177" y="613" width="162" height="116"/>
+			</rectangle>
+			<textField>
+				<reportElement x="7" y="613" width="161" height="27" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{prod_produto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="7" y="707" width="161" height="22" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipprod_tipoproduto}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="177" y="5" width="162" height="116"/>
+			</rectangle>
+			<textField>
+				<reportElement x="178" y="99" width="161" height="22" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipprod_tipoproduto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="178" y="5" width="161" height="27" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{prod_produto}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="177" y="126" width="162" height="116"/>
+			</rectangle>
+			<textField>
+				<reportElement x="178" y="220" width="161" height="22" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipprod_tipoproduto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="178" y="126" width="161" height="27" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{prod_produto}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement mode="Opaque" x="195" y="32" width="134" height="62"/>
+				<jr:Code39 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{prod_codigo}]]></jr:codeExpression>
+				</jr:Code39>
+			</componentElement>
+			<componentElement>
+				<reportElement mode="Opaque" x="195" y="153" width="134" height="62"/>
+				<jr:Code39 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{prod_codigo}]]></jr:codeExpression>
+				</jr:Code39>
+			</componentElement>
+			<rectangle>
+				<reportElement x="348" y="492" width="162" height="116"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="348" y="5" width="162" height="116"/>
+			</rectangle>
+			<textField>
+				<reportElement x="349" y="99" width="161" height="22" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipprod_tipoproduto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="349" y="5" width="161" height="27" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{prod_produto}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="348" y="126" width="162" height="116"/>
+			</rectangle>
+			<textField>
+				<reportElement x="349" y="220" width="161" height="22" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipprod_tipoproduto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="349" y="126" width="161" height="27" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{prod_produto}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement mode="Opaque" x="366" y="32" width="134" height="62"/>
+				<jr:Code39 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{prod_codigo}]]></jr:codeExpression>
+				</jr:Code39>
+			</componentElement>
+			<componentElement>
+				<reportElement mode="Opaque" x="366" y="153" width="134" height="62"/>
+				<jr:Code39 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{prod_codigo}]]></jr:codeExpression>
+				</jr:Code39>
+			</componentElement>
+			<rectangle>
+				<reportElement x="177" y="492" width="162" height="116"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="177" y="248" width="162" height="116"/>
+			</rectangle>
+			<textField>
+				<reportElement x="178" y="248" width="161" height="27" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{prod_produto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="178" y="342" width="161" height="22" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipprod_tipoproduto}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="348" y="371" width="162" height="116"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="177" y="371" width="162" height="116"/>
+			</rectangle>
+			<textField>
+				<reportElement x="178" y="465" width="161" height="22" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipprod_tipoproduto}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="348" y="248" width="162" height="116"/>
+			</rectangle>
+			<textField>
+				<reportElement x="349" y="342" width="161" height="22" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipprod_tipoproduto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="349" y="371" width="161" height="27" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{prod_produto}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement mode="Opaque" x="195" y="275" width="134" height="62"/>
+				<jr:Code39 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{prod_codigo}]]></jr:codeExpression>
+				</jr:Code39>
+			</componentElement>
+			<textField>
+				<reportElement x="178" y="371" width="161" height="27" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{prod_produto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="349" y="248" width="161" height="27" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{prod_produto}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement mode="Opaque" x="366" y="398" width="134" height="62"/>
+				<jr:Code39 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{prod_codigo}]]></jr:codeExpression>
+				</jr:Code39>
+			</componentElement>
+			<componentElement>
+				<reportElement mode="Opaque" x="195" y="398" width="134" height="62"/>
+				<jr:Code39 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{prod_codigo}]]></jr:codeExpression>
+				</jr:Code39>
+			</componentElement>
+			<textField>
+				<reportElement x="349" y="465" width="161" height="22" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipprod_tipoproduto}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement mode="Opaque" x="366" y="275" width="134" height="62"/>
+				<jr:Code39 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{prod_codigo}]]></jr:codeExpression>
+				</jr:Code39>
+			</componentElement>
+			<textField>
+				<reportElement x="349" y="492" width="161" height="27" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{prod_produto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="178" y="586" width="161" height="22" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipprod_tipoproduto}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement mode="Opaque" x="366" y="519" width="134" height="62"/>
+				<jr:Code39 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{prod_codigo}]]></jr:codeExpression>
+				</jr:Code39>
+			</componentElement>
+			<componentElement>
+				<reportElement mode="Opaque" x="195" y="519" width="134" height="62"/>
+				<jr:Code39 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{prod_codigo}]]></jr:codeExpression>
+				</jr:Code39>
+			</componentElement>
+			<textField>
+				<reportElement x="349" y="613" width="161" height="27" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{prod_produto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="178" y="492" width="161" height="27" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{prod_produto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="178" y="613" width="161" height="27" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{prod_produto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="349" y="586" width="161" height="22" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipprod_tipoproduto}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement mode="Opaque" x="195" y="640" width="134" height="62"/>
+				<jr:Code39 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{prod_codigo}]]></jr:codeExpression>
+				</jr:Code39>
+			</componentElement>
+			<textField>
+				<reportElement x="178" y="707" width="161" height="22" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipprod_tipoproduto}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement mode="Opaque" x="366" y="640" width="134" height="62"/>
+				<jr:Code39 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{prod_codigo}]]></jr:codeExpression>
+				</jr:Code39>
+			</componentElement>
+			<textField>
+				<reportElement x="349" y="707" width="161" height="22" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipprod_tipoproduto}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement mode="Opaque" x="32" y="32" width="134" height="62"/>
+				<jr:Code39 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{prod_codigo}]]></jr:codeExpression>
+				</jr:Code39>
+			</componentElement>
+		</band>
+	</columnHeader>
+</jasperReport>
